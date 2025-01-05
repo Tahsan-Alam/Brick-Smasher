@@ -12,15 +12,24 @@ public class bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!bounceMovement.isGameStart)
+        {
+            Destroy(gameObject);
+        }
         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && bounceMovement.isGameStart)
         {
             gameStop2 = true;
+            Time.timeScale = 0f;
             Destroy(gameObject);
+            
         }
+       
     }
+
+
 }

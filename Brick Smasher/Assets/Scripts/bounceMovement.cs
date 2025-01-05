@@ -18,6 +18,7 @@ public class bounceMovement : MonoBehaviour
     private float height = -3.73f;
     private Rigidbody2D rb;
     private GameObject player;
+    private Rigidbody2D ballRb;
 
     public static bool isGameStart;
     private int health = 5;
@@ -45,6 +46,8 @@ public class bounceMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
 
+        ballRb = GetComponent<Rigidbody2D>();
+
         lostHealth = GetComponent<AudioSource>();
         game = GetComponent<AudioSource>();
        
@@ -58,9 +61,12 @@ public class bounceMovement : MonoBehaviour
     {
         if (gameOver == false)
         {
-            if (transform.position.y < height && gameStop == false)
+            if ((transform.position.y < height && gameStop == false) || bomb.gameStop2)
             {
                 gameStop = true;
+                bomb.gameStop2 = false;
+                Time.timeScale = 0;
+                ballRb.bodyType = RigidbodyType2D.Static;
                 StartCoroutine(afterDarkScreen());
 
             }
@@ -73,7 +79,9 @@ public class bounceMovement : MonoBehaviour
           
             if (isGameStart)
             {
+                
                 rb.gravityScale = 1f;
+                Time.timeScale = 1f;
                 if (rb.linearVelocity.magnitude - speed > 2)
                 {
                     rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speed - 7f);
@@ -105,8 +113,6 @@ public class bounceMovement : MonoBehaviour
         color.a = 0f;
         darkScreenImage.color = color;
         gameStop = false;
-       
-        
     }
 
     private IEnumerator afterDarkScreen()
@@ -125,11 +131,13 @@ public class bounceMovement : MonoBehaviour
             }
             else
             {
+                ballRb.bodyType = RigidbodyType2D.Dynamic;
                 healthText.text = "" + health;
                 transform.position = new Vector2(0, -2.601f);
                 player.transform.position = new Vector2(0.05f, -2.86f);
                 rb.linearVelocity = Vector3.zero;
                 isGameStart = false;
+                
             }
         }
     }
