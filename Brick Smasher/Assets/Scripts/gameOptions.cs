@@ -60,6 +60,7 @@ public class gameOptions : MonoBehaviour
 
     public void restart()
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  
     }
 

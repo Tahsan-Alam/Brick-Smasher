@@ -38,6 +38,7 @@ public class bounceMovement : MonoBehaviour
         gameStop = false;
         isGameStart = false;
         gameOver = false;
+        Time.timeScale = 1f;
     }
     private void Start()
     {
@@ -69,6 +70,7 @@ public class bounceMovement : MonoBehaviour
                 rb.linearVelocity = new Vector2(0, 15f);
                 isGameStart = true;
             }
+          
             if (isGameStart)
             {
                 rb.gravityScale = 1f;
@@ -103,6 +105,7 @@ public class bounceMovement : MonoBehaviour
         color.a = 0f;
         darkScreenImage.color = color;
         gameStop = false;
+       
         
     }
 
@@ -115,7 +118,7 @@ public class bounceMovement : MonoBehaviour
         {
             rb.gravityScale = 0;
             health -= 1;
-            if(health == 0)
+            if (health == 0)
             {
                 game.PlayOneShot(gameOverSound,1.0f);
                 gameOver = true;

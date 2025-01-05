@@ -5,8 +5,6 @@ using Unity.VisualScripting;
 public class bonus : MonoBehaviour
 {
     private float randX;
-    private float randY;
-    private int wait = 5;
     private Vector2 position;
     public GameObject[] prefabs;
     private int randIndex;
@@ -14,13 +12,13 @@ public class bonus : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InvokeRepeating("spawnRate", 5f, 5f);
+        InvokeRepeating(nameof(spawnRate), 5f, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
     private void spawnRate()
@@ -34,6 +32,7 @@ public class bonus : MonoBehaviour
         }
        
     }
+
 
    
 }

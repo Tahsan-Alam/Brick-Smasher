@@ -11,7 +11,6 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         ball = GameObject.FindWithTag("Ball");
-       
     }
 
     // Update is called once per frame
@@ -43,7 +42,5 @@ public class playerMovement : MonoBehaviour
             }
         }
       
-
-
     }
 }
