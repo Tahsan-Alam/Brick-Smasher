@@ -21,7 +21,7 @@ public class bounceMovement : MonoBehaviour
     private Rigidbody2D ballRb;
 
     public static bool isGameStart;
-    private int health = 5;
+    public static int lives = 5;
     public TextMeshProUGUI healthText;
     public Image darkScreenImage;
     private Color color;
@@ -39,6 +39,7 @@ public class bounceMovement : MonoBehaviour
         gameStop = false;
         isGameStart = false;
         gameOver = false;
+        lives = 5;
         Time.timeScale = 1f;
     }
     private void Start()
@@ -100,7 +101,14 @@ public class bounceMovement : MonoBehaviour
                 }
 
             }
-        } 
+            if (health.healthUp)
+            {
+                lives += 1;
+                healthText.text = "" + lives;
+                health.healthUp = false;
+            }
+        }
+       
     }
 
     
@@ -123,8 +131,8 @@ public class bounceMovement : MonoBehaviour
         if(gameStop == false)
         {
             rb.gravityScale = 0;
-            health -= 1;
-            if (health == 0)
+            lives -= 1;
+            if (lives == 0)
             {
                 game.PlayOneShot(gameOverSound,1.0f);
                 gameOver = true;
@@ -132,7 +140,7 @@ public class bounceMovement : MonoBehaviour
             else
             {
                 ballRb.bodyType = RigidbodyType2D.Dynamic;
-                healthText.text = "" + health;
+                healthText.text = "" + lives;
                 transform.position = new Vector2(0, -2.601f);
                 player.transform.position = new Vector2(0.05f, -2.86f);
                 rb.linearVelocity = Vector3.zero;
