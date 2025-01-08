@@ -10,7 +10,7 @@ public class bonus : MonoBehaviour
     private int randIndex;
     private GameObject ball;
     private Rigidbody2D rb;
-   // private bool spwaned = false;
+    //private bool spawned = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +21,7 @@ public class bonus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+    
     }
 
     private void spawnRate()
@@ -33,7 +33,7 @@ public class bonus : MonoBehaviour
             randIndex = Random.Range(0, prefabs.Length);
             Instantiate(prefabs[randIndex], position, Quaternion.identity);
         }
-       
+               
     }
 
 

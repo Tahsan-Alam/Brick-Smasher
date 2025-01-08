@@ -4,7 +4,7 @@ public class bomb : MonoBehaviour
 {
     public static bool gameStop2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         gameStop2 = false;
     }
@@ -12,7 +12,7 @@ public class bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!bounceMovement.isGameStart)
+        if (bounceMovement.gameStop)
         {
             Destroy(gameObject);
         }

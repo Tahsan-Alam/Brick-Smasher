@@ -14,7 +14,7 @@ public class health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!bounceMovement.isGameStart)
+        if (bounceMovement.gameStop)
         {
             Destroy(gameObject);
         }
