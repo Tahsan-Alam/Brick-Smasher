@@ -8,6 +8,8 @@ TagManager:
   - Brick
   - Border
   - DarkScreen
+  - long
+  - short
   layers:
   - Default
   - TransparentFX

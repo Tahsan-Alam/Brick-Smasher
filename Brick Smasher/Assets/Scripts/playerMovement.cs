@@ -64,5 +64,12 @@ public class playerMovement : MonoBehaviour
 
         }
 
+        if(collision.CompareTag("short")  && bounceMovement.isGameStart)
+        {
+            newScale.y = 0.0601f;
+            transform.localScale = newScale;
+            Destroy (collision.gameObject);
+        }
+
     }
 }

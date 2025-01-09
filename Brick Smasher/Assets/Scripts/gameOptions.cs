@@ -7,9 +7,8 @@ using System.Collections;
 public class gameOptions : MonoBehaviour
 {
     public Image escape;
-   // public Canvas canvas;
+    public Image gameOver;
     private bool menuActive = false;
-    public TextMeshProUGUI header;
     private Rigidbody2D ballRigidBody;
     private GameObject ball;
     private int stopTime = 4;
@@ -52,8 +51,7 @@ public class gameOptions : MonoBehaviour
         }
         else
         {
-            escape.gameObject.SetActive(true);
-            header.text = "Game Over";
+            gameOver.gameObject.SetActive(true);
         }
        
     }
@@ -62,6 +60,12 @@ public class gameOptions : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  
     }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
+
 
     private IEnumerator pauseTime()
     {
