@@ -26,7 +26,7 @@ public class bonus : MonoBehaviour
 
     private void spawnRate()
     {
-        if (bounceMovement.isGameStart && !bounceMovement.gameOver && !bounceMovement.gameStop)
+        if (bounceMovement.isGameStart && !bounceMovement.gameOver && !bounceMovement.gameStop && !gameOptions.menuActive)
         {
             randX = Random.Range(-6.92f, 7.05f);
             position = new Vector2(ball.transform.position.x - 3, 4.94f);

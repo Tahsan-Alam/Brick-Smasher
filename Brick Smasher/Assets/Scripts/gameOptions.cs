@@ -8,15 +8,16 @@ public class gameOptions : MonoBehaviour
 {
     public Image escape;
     public Image gameOver;
-    private bool menuActive = false;
+    public static bool menuActive = false;
     private Rigidbody2D ballRigidBody;
-    private GameObject ball;
+   // private GameObject ball;
     private int stopTime = 4;
     private int passedTime = 1;
     public TextMeshProUGUI timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {   
+        menuActive = false;
         ballRigidBody = GameObject.FindWithTag("Ball").GetComponent<Rigidbody2D>();  
     }
 
@@ -36,7 +37,6 @@ public class gameOptions : MonoBehaviour
                 {
                     Time.timeScale = 0;
                     
-
                     if(bounceMovement.isGameStart)
                     {
                         ballRigidBody.bodyType = RigidbodyType2D.Static;
