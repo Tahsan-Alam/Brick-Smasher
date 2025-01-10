@@ -21,7 +21,7 @@ public class bounceMovement : MonoBehaviour
     private Rigidbody2D ballRb;
 
     public static bool isGameStart;
-    public static int lives = 5;
+    public static int lives = 8;
     public TextMeshProUGUI healthText;
     public Image darkScreenImage;
     private Color color;
@@ -39,7 +39,7 @@ public class bounceMovement : MonoBehaviour
         gameStop = false;
         isGameStart = false;
         gameOver = false;
-        lives = 5;
+        lives = 8;
         Time.timeScale = 1f;
     }
     private void Start()
@@ -80,26 +80,28 @@ public class bounceMovement : MonoBehaviour
           
             if (isGameStart)
             {
-                
                 rb.gravityScale = 1f;
                 Time.timeScale = 1f;
-                if (rb.linearVelocity.magnitude - speed > 2)
+                if(rb.bodyType == RigidbodyType2D.Dynamic)
                 {
-                    rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speed - 7f);
+                    if (rb.linearVelocity.magnitude - speed > 2)
+                    {
+                        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speed - 7f);
+                    }
+                    else if (rb.linearVelocity.magnitude > speed)
+                    {
+                        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speed - 2f);
+                    }
+                    if (transform.position.x >= 7.33)
+                    {
+                        rb.linearVelocity = new Vector2(2, 6.39f);
+                    }
+                    if (transform.position.x <= -7.16)
+                    {
+                        rb.linearVelocity = new Vector2(2, -6.6f);
+                    }
                 }
-                else if (rb.linearVelocity.magnitude > speed)
-                {
-                    rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speed - 2f);
-                }
-                if (transform.position.x >= 7.33)
-                {
-                    rb.linearVelocity = new Vector2(2, 6.39f);
-                }
-                if (transform.position.x <= -7.16)
-                {
-                    rb.linearVelocity = new Vector2(2, -6.6f);
-                }
-
+              
             }
             if (health.healthUp)
             {

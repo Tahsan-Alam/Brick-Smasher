@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using TMPro;
 
 public class brickCollision : MonoBehaviour
 {
@@ -9,7 +9,8 @@ public class brickCollision : MonoBehaviour
     public AudioClip brickSound;
     public AudioClip paddleSound;
     public AudioClip metalSound;
-  
+    private int smashNum = 0;
+    public TextMeshProUGUI smash;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,7 +28,8 @@ public class brickCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Brick"))
         {
-           
+            smashNum += 1;
+            smash.text = "Smash ->" + smashNum;
             brick.PlayOneShot(brickSound, 1.0f);
             Destroy(collision.gameObject);
         }

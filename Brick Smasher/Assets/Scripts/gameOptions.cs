@@ -14,6 +14,7 @@ public class gameOptions : MonoBehaviour
     private int stopTime = 4;
     private int passedTime = 1;
     public TextMeshProUGUI timer;
+    public Image gameWin;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {   
@@ -52,6 +53,14 @@ public class gameOptions : MonoBehaviour
         else
         {
             gameOver.gameObject.SetActive(true);
+        }
+
+        if (SetBlocks.gameWin)
+        {
+            ballRigidBody.bodyType = RigidbodyType2D.Static;
+            Time.timeScale = 0;
+            bounceMovement.gameOver = true;
+            gameWin.gameObject.SetActive(true);
         }
        
     }
