@@ -12,7 +12,12 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    public void startGameDelay()
+    {
+        Invoke(nameof(startGame), 0.5f);
     }
 
     public void startGame()
@@ -20,6 +25,10 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void exitGameDelay()
+    {
+        Invoke(nameof(exitGame), 0.5f);
+    }
     public void exitGame()
     {
         Application.Quit();

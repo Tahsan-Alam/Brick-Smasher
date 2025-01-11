@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
+
 public class gameOptions : MonoBehaviour
 {
     public Image escape;
@@ -15,12 +16,14 @@ public class gameOptions : MonoBehaviour
     private int passedTime = 1;
     public TextMeshProUGUI timer;
     public Image gameWin;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {   
         menuActive = false;
         ballRigidBody = GameObject.FindWithTag("Ball").GetComponent<Rigidbody2D>();  
     }
+
 
     // Update is called once per frame
     void Update()
@@ -65,11 +68,19 @@ public class gameOptions : MonoBehaviour
        
     }
 
+    public void restartDelay()
+    {
+        Invoke(nameof(restart), 0.5f);
+    }
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  
     }
 
+    public void quitDelay()
+    {
+        Invoke(nameof(quit), 0.5f);
+    }
     public void quit()
     {
         Application.Quit();
