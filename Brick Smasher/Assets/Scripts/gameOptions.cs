@@ -83,7 +83,7 @@ public class gameOptions : MonoBehaviour
     }
     public void quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 

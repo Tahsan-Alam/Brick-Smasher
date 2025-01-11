@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 
 public class bonus : MonoBehaviour
 {
+    private float randX1;
+    private float randX2;
     private float randX;
     private Vector2 position;
     public GameObject[] prefabs;
@@ -28,8 +30,16 @@ public class bonus : MonoBehaviour
     {
         if (bounceMovement.isGameStart && !bounceMovement.gameOver && !bounceMovement.gameStop && !gameOptions.menuActive)
         {
-            randX = Random.Range(-6.92f, 7.05f);
-            position = new Vector2(ball.transform.position.x - 3, 4.94f);
+            if(transform.position.x - (-6.92) < (7.05 - transform.position.x))
+            {
+                randX = Random.Range(-6.92f, transform.position.x);
+            }
+            else if(transform.position.x - (-6.92) > (7.05 - transform.position.x))
+            {
+                randX = Random.Range(transform.position.x, 7.05f);
+            }
+          
+            position = new Vector2(randX, 4.94f);
             randIndex = Random.Range(0, prefabs.Length);
             Instantiate(prefabs[randIndex], position, Quaternion.identity);
         }

@@ -43,11 +43,12 @@ public class SetBlocks : MonoBehaviour
             
             if (stop)
             {
+                rb.bodyType= RigidbodyType2D.Dynamic;
                 ball.transform.position = new Vector2(0, -2.601f);
                 player.transform.position = new Vector2(0.05f, -2.86f);
                 ball.transform.SetParent(player.transform);
-                rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.linearVelocity = Vector3.zero;
+                bounceMovement.isGameStart = false;
                 stop = false;
             }
 
