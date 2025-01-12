@@ -11,7 +11,6 @@ public class gameOptions : MonoBehaviour
     public Image gameOver;
     public static bool menuActive = false;
     private Rigidbody2D ballRigidBody;
-   // private GameObject ball;
     private int stopTime = 4;
     private int passedTime = 1;
     public TextMeshProUGUI timer;
@@ -31,7 +30,7 @@ public class gameOptions : MonoBehaviour
         
         if (bounceMovement.gameOver == false)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 if (menuActive == true)
                 {

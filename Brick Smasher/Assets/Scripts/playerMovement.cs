@@ -68,7 +68,7 @@ public class playerMovement : MonoBehaviour
         {
             newScale.y = 0.0601f;
             transform.localScale = newScale;
-            Destroy (collision.gameObject);
+            Destroy (collision.gameObject); 
         }
 
     }

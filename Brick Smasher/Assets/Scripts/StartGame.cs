@@ -24,13 +24,12 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    public void exitGameDelay()
+    public void quitDelay()
     {
-        Invoke(nameof(exitGame), 0.5f);
+        Invoke(nameof(quit), 0.5f);
     }
-    public void exitGame()
+    public void quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
