@@ -24,12 +24,5 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void quitDelay()
-    {
-        Invoke(nameof(quit), 0.5f);
-    }
-    public void quit()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-    }
+    
 }
